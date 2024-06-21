@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 export default function App() {
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const [number, setNumber] = useState(0);
 
   function handlePress() {
@@ -16,17 +16,19 @@ export default function App() {
   }
 
   return (
-    <View style={[styles.container, {height}, StyleSheet.absoluteFill]}>
+    <View style={[styles.container, { height }, StyleSheet.absoluteFill]}>
       <Text>Random number: {number}</Text>
       <View style={styles.br} />
       <Pressable
-        style={({pressed}) => [
+        style={({ pressed }) => [
           {
             opacity: pressed ? 0.7 : 1,
           },
           styles.btn,
         ]}
-        onPress={handlePress}>
+        onPress={handlePress}
+        onTouchStart={(e) => console.log('touch start', e)}
+      >
         <Text style={styles.btnText}>Generate a number</Text>
       </Pressable>
     </View>
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: '#222',
-    padding: 10,
+    padding: 50,
   },
   btnText: {
     color: '#fff',
